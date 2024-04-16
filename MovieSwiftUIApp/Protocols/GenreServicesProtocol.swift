@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import Combine
+
+protocol GenreServicesProtocol:AnyObject {
+  
+  typealias GenreCompletion = (_ result:Result<[GenresViewModel],Error>)->()
+
+  func getGenres(cancellables:inout Set<AnyCancellable>, completion:@escaping GenreCompletion)
+
+}

@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+class NetworkManager:ObservableObject {
+
+  @Published var service:NetworkServiceProtocol = {
+    var isRunningTests: Bool {
+        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+    }
+    return isRunningTests ? MockWebService() : Webservice()
+  }()
+}

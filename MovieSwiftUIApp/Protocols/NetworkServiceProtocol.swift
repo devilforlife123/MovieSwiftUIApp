@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import Combine
+
+protocol NetworkServiceProtocol {
+  func fetch<T>(type:T.Type,url:EndPoints, page:Int?)->AnyPublisher<T,Error> where T:Decodable
+}
